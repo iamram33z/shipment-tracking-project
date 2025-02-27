@@ -1,0 +1,4 @@
+faker
+black
+flake8
+pytest
