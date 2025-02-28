@@ -2,16 +2,20 @@ import os
 import json
 from google.cloud import firestore, storage
 from google.api_core.exceptions import GoogleAPICallError
+from dotenv import load_dotenv
 
 # Load environment variables
-BATCH_SIZE = 2000  # Number of records per batch
-CLOUD_STORAGE_BUCKET = os.getenv("CLOUD_STORAGE_BUCKET")
-FIRESTORE_COLLECTION_NAME = os.getenv("FIRESTORE_COLLECTION_NAME")
+load_dotenv()  # Load .env file
+
+BATCH_SIZE = int(os.getenv("BATCH_SIZE", 2000))  # Number of records per batch, default 2000
+CLOUD_STORAGE_BUCKET = os.getenv("GOOGLE_CLOUD_STORAGE_BUCKET")
+FIRESTORE_COLLECTION_NAME = os.getenv("GOOGLE_FIRESTORE_COLLECTION_NAME")
 
 # Initialize Firestore and Cloud Storage clients
 firestore_client = firestore.Client()
 storage_client = storage.Client()
 bucket = storage_client.bucket(CLOUD_STORAGE_BUCKET)
+
 
 def move_data_to_gcs(request):
     try:
@@ -38,4 +42,7 @@ def move_data_to_gcs(request):
 
     except GoogleAPICallError as e:
         print(f"An error occurred: {e}")
+        return f"Failed to process records: {e}"
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
         return f"Failed to process records: {e}"

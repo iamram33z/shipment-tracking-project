@@ -1,5 +1,5 @@
 -- Create Fact Table: EquipmentEvent
-CREATE TABLE IF NOT EXISTS datawarehouse.EquipmentEvent (
+CREATE TABLE IF NOT EXISTS logistic_datawarehouse.EquipmentEvent (
     eventID STRING,
     equipmentEventTypeCode STRING,
     equipmentReference STRING,
@@ -14,14 +14,14 @@ CREATE TABLE IF NOT EXISTS datawarehouse.EquipmentEvent (
 );
 
 -- Create Dimension Table: DocumentReferences
-CREATE TABLE IF NOT EXISTS datawarehouse.DocumentReferences (
+CREATE TABLE IF NOT EXISTS logistic_datawarehouse.DocumentReferences (
     documentReferenceID STRING,
     documentReferenceType STRING,
     documentReferenceValue STRING
 );
 
 -- Create Dimension Table: EventLocation
-CREATE TABLE IF NOT EXISTS datawarehouse.EventLocation (
+CREATE TABLE IF NOT EXISTS logistic_datawarehouse.EventLocation (
     eventLocationID STRING,
     city STRING,
     country STRING,
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS datawarehouse.EventLocation (
 );
 
 -- Create Dimension Table: Seals
-CREATE TABLE IF NOT EXISTS datawarehouse.Seals (
+CREATE TABLE IF NOT EXISTS logistic_datawarehouse.Seals (
     sealID STRING,
     sealNumber STRING,
     sealSource STRING,
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS datawarehouse.Seals (
 );
 
 -- Create Dimension Table: TransportCall
-CREATE TABLE IF NOT EXISTS datawarehouse.TransportCall (
+CREATE TABLE IF NOT EXISTS logistic_datawarehouse.TransportCall (
     transportCallID STRING,
     carrierServiceCode STRING,
     exportVoyageNumber STRING,
