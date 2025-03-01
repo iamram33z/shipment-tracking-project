@@ -64,7 +64,7 @@ def transform_and_load(request):
                     }
                     tables_data["EquipmentEvent"].append(equipment_event)
 
-                    #Add logic for the other tables.
+                    # Add logic for other tables.
                     for doc_ref in event.get("documentReferences", []):
                         tables_data["DocumentReferences"].append({
                             "documentReferenceID": doc_ref.get("documentReferenceValue"),
@@ -132,3 +132,4 @@ def transform_and_load(request):
     except Exception as e:
         print(f"An error occurred: {e}")
         return f"Failed to process data: {e}"
+

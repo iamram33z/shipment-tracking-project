@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()  # Load .env file
 
-BATCH_SIZE = int(os.getenv("BATCH_SIZE", 2000))  # Number of records per batch, default 2000
+BATCH_SIZE = int(os.getenv("BATCH_SIZE", 2000))
 CLOUD_STORAGE_BUCKET = os.getenv("GOOGLE_CLOUD_STORAGE_BUCKET")
 FIRESTORE_COLLECTION_NAME = os.getenv("GOOGLE_FIRESTORE_COLLECTION_NAME")
 
@@ -34,7 +34,7 @@ def move_data_to_gcs(request):
         else:
             print("No more records to process.")
 
-        # Delete processed documents (optional)
+        # Optionally, delete processed documents (to prevent reprocessing)
         for doc in docs:
             doc.reference.delete()
 
@@ -46,3 +46,4 @@ def move_data_to_gcs(request):
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
         return f"Failed to process records: {e}"
+
