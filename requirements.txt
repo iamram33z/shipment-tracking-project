@@ -1,3 +1,5 @@
+pandas
+pyspark
 faker
 black
 flake8
@@ -8,6 +10,8 @@ python-dotenv
 google-cloud-firestore
 google-cloud-storage
 google-cloud-bigquery
+google-cloud-bigquery-storage
 apache-airflow[gcp]
 apache-airflow
 apache-airflow-providers-google
+firebase_admin
