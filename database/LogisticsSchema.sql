@@ -34,8 +34,8 @@ CREATE TABLE IF NOT EXISTS Logistics.Vessel (
 CREATE TABLE IF NOT EXISTS Logistics.TransportCall (
     transportCallID STRING, -- SHA-256 truncated 16-character ID, intended primary key
     carrierServiceCode STRING, -- Carrier service code
-    exportVoyageNumber INT64, -- Export voyage number
-    importVoyageNumber INT64, -- Import voyage number
+    exportVoyageNumber STRING, -- Export voyage number
+    importVoyageNumber STRING, -- Import voyage number
     modeOfTransport STRING, -- Mode of transport (Air, Sea, Road)
     vesselID STRING, -- Intended foreign key to Vessel
     facilityID STRING -- Intended foreign key to Facility
