@@ -6,13 +6,14 @@ from datetime import datetime, timedelta
 
 
 # Define data structures
-CITIES = ["København", "Oslo", "Berlin", "Paris", "London"]
-COUNTRIES = ["Denmark", "Norway", "Germany", "France", "UK"]
+CITIES = ["København", "Oslo", "Berlin", "Paris", "London", "Colombo", "Bangkok", "Tokyo", "Seoul", "Sydney", "Melbourne", "Jakarta", "Dhaka", "Mumbai"]
+COUNTRIES = ["Denmark", "Norway", "Germany", "France", "UK", "Sri Lanka", "India", "China", "Japan", "South Korea", "Thailand", "Malaysia", "Vietnam", "India"]
 VESSELS = ["King of the Seas", "Ocean Explorer", "Sea Guardian", "Wave Rider"]
 EVENT_TYPES = ["LOAD", "UNLOAD", "ARRIVAL", "DEPARTURE"]
-SEAL_SOURCES = ["CUSTOMS", "CARRIER"]
-FACILITY_CODES = ["ADT", "XYZ", "PQR"]
-STATE_REGIONS = ["N/A", "Region A", "Region B"]
+SEAL_SOURCES = ["CUSTOMS", "CARRIER", "INSPECTION", "QUARANTINE", "RELEASE"]
+FACILITY_CODES = ["ADT", "XYZ", "PQR", "QRS"]
+STATE_REGIONS = ["N/A", "Region A", "Region B", "Region C"]
+NAMES = ["John Doe", "Jane Smith", "Mike Johnson", "Sarah Johnson", "Emily Davis", "Michael Wilson", "Daniel Brown"]
 
 def generate_random_event():
     event_id = str(uuid.uuid4())
@@ -32,7 +33,7 @@ def generate_random_event():
                     "city": random.choice(CITIES),
                     "country": random.choice(COUNTRIES),
                     "floor": f"{random.randint(1, 10)}F",
-                    "name": "Henrik",
+                    "name": random.choice(NAMES),
                     "postCode": str(random.randint(1000, 9999)),
                     "stateRegion": random.choice(STATE_REGIONS),
                     "street": "Main Street",
@@ -68,7 +69,7 @@ def generate_random_event():
         }
     }
 
-def generate_json_file(filename="pre_project/events.json", num_records=20000):
+def generate_json_file(filename="pre_project/events.json", num_records=1000):
     data = [generate_random_event() for _ in range(num_records)]
     with open(filename, "w") as f:
         json.dump(data, f, indent=4)
